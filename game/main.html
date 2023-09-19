@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+    <style>
+        body {
+            background-image: url('snake.jpg'); /* Replace with the actual path to your image */
+            background-size: cover; /* Cover the entire viewport */
+            background-repeat: no-repeat;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            height: 100vh; /* Set the height of the body to 100% of the viewport height */
+            display: flex;
+            justify-content: center;
+            align-items: center; /* Center both horizontally and vertically */
+        }
+
+        /* Style for the buttons */
+        button {
+            background-color: #4CAF50;
+            font-size: 24px; /* Adjust the font size as needed */
+            padding: 10px 20px; /* Adjust the padding as needed */
+            border-radius: 12px;
+        }
+
+        .score {
+            position: absolute;
+            top: 60%; /* Center vertically */
+            left: 50%; /* Center horizontally */
+            transform: translate(-50%, -50%); /* Center both horizontally and vertically */
+            font-size: 24px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div style="text-align: center;">
+        <button id="playAgainButton">Start Game</button> <!-- Play Again button -->
+    </div>
+    <!-- Move the score display here -->
+    <div class="score" id="score">Score: 0</div>
+    <script>
+        // Check if the game has been played before (by checking if a score is stored)
+        const score = localStorage.getItem("score");
+        if (score === null) {
+            // If no score is found, hide the "Play Again" button
+            document.getElementById("playAgainButton").style.display = "none";
+        } else {
+            // If a score is found, display the "Play Again" button
+            document.getElementById("playAgainButton").style.display = "block";
+            // Update the score display with the retrieved score
+            document.getElementById("score").textContent = `Score: ${score}`;
+        }
+
+        // Add a click event listener to the Play Again button
+        document.getElementById("playAgainButton").addEventListener("click", function() {
+            // Redirect to the Snake Game page to start a new game
+            window.location.href = "snake_game.html"; // Change to the actual filename of your Snake Game page
+        });
+
+    </script>
+</body>
+</html>
